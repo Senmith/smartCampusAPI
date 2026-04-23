@@ -1,0 +1,27 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.campus.models;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Room {
+    private String id; // e.g., "LIB-301"
+    private String name; // e.g., "Library Quiet Study"
+    private int capacity;
+    private List<String> sensorIds = new ArrayList<>(); // Track hardware
+
+    public Room() {} // Default constructor
+
+    // Getters and Setters
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public int getCapacity() { return capacity; }
+    public void setCapacity(int capacity) { this.capacity = capacity; }
+    public List<String> getSensorIds() { return sensorIds; }
+    public void setSensorIds(List<String> sensorIds) { this.sensorIds = sensorIds; }
+}
