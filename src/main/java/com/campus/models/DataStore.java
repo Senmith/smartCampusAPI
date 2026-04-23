@@ -10,21 +10,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class DataStore {
 
-    // Storage for Rooms: Key is Room ID (e.g., "LIB-301")
+    // Storage for Rooms: Key is Room ID
     public static Map<String, Room> rooms = new ConcurrentHashMap<>();
 
-    // Storage for Sensors: Key is Sensor ID (e.g., "TEMP-001")
+    // Storage for Sensors: Key is Sensor ID
     public static Map<String, Sensor> sensors = new ConcurrentHashMap<>();
 
-    // Storage for Readings: Maps a Sensor ID to its list of historical readings [cite: 139]
+    // Storage for Readings: Maps a Sensor ID to its list of historical readings
     public static Map<String, List<SensorReading>> readings = new ConcurrentHashMap<>();
-    
-    // Optional: Static block to add dummy data for testing
-    static {
-        Room demoRoom = new Room();
-        demoRoom.setId("LIB-301");
-        demoRoom.setName("Library Quiet Study");
-        demoRoom.setCapacity(20);
-        rooms.put(demoRoom.getId(), demoRoom);
-    }
 }

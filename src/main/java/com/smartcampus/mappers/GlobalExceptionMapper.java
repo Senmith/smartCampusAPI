@@ -5,6 +5,7 @@
 package com.smartcampus.mappers;
 
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.ext.ExceptionMapper;
 import jakarta.ws.rs.ext.Provider;
 import jakarta.ws.rs.core.MediaType;
@@ -14,6 +15,15 @@ public class GlobalExceptionMapper implements ExceptionMapper<Throwable> {
 
     @Override
     public Response toResponse(Throwable t) {
+    // Preserve explicit HTTP errors raised by JAX-RS 
+    if (t instanceof WebApplicationException) {
+        WebApplicationException webEx = (WebApplicationException) t;
+        return Response.status(webEx.getResponse().getStatus())
+            .type(MediaType.APPLICATION_JSON)
+            .entity("{\"error\":\"" + webEx.getMessage() + "\"}")
+            .build();
+    }
+
         // Intercepts any unexpected runtime errors (e.g., NullPointerException) 
         // Returns a generic HTTP 500 Internal Server Error 
         return Response.status(Response.Status.INTERNAL_SERVER_ERROR)

@@ -18,8 +18,8 @@ public class DiscoveryResource {
         root.put("version", "v1");
 
         Map<String, String> admin = new LinkedHashMap<>();
-        admin.put("name", "Smart Campus Backend Team");
-        admin.put("email", "smartcampus-admin@westminster.ac.uk");
+        admin.put("name", "Senmith Sahajeewa");
+        admin.put("email","senmith.20240756@iit.ac.lk");
         root.put("contact", admin);
 
         Map<String, String> resources = new LinkedHashMap<>();
