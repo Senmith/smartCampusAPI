@@ -4,6 +4,7 @@
  */
 package com.smartcampus.mappers;
 
+import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.ExceptionMapper;
 import jakarta.ws.rs.ext.Provider;
@@ -14,6 +15,7 @@ public class ConflictMapper implements ExceptionMapper<RoomNotEmptyException> {
     @Override
     public Response toResponse(RoomNotEmptyException ex) {
         return Response.status(Response.Status.CONFLICT)
+                .type(MediaType.APPLICATION_JSON)
                 .entity("{\"error\": \"" + ex.getMessage() + "\"}")
                 .build();
     }

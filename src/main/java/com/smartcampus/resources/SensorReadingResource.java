@@ -7,6 +7,7 @@ package com.smartcampus.resources;
 import com.campus.models.DataStore;
 import com.campus.models.Sensor;
 import com.campus.models.SensorReading;
+import com.smartcampus.exceptions.SensorUnavailableException;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
 import java.util.ArrayList;
@@ -28,6 +29,9 @@ public class SensorReadingResource {
     public Response addReading(SensorReading reading) {
         Sensor sensor = DataStore.sensors.get(sensorId);
         if (sensor == null) return Response.status(Response.Status.NOT_FOUND).build();
+        if ("MAINTENANCE".equalsIgnoreCase(sensor.getStatus())) {
+            throw new SensorUnavailableException("Sensor is in MAINTENANCE mode and cannot accept readings.");
+        }
 
         // Save history
         DataStore.readings.computeIfAbsent(sensorId, k -> new ArrayList<>()).add(reading);

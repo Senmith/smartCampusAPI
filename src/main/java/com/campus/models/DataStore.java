@@ -4,10 +4,6 @@
  */
 package com.campus.models;
 
-import com.campus.models.Room;
-import com.campus.models.Sensor;
-import com.campus.models.SensorReading;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
